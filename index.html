@@ -237,6 +237,36 @@
             newblurb.object3D.position.set(-.4, .1, 1.01);
             document.querySelector('#shelfBookText'+i).appendChild(newblurb);
           }
+          
+                    for (var i=0; i<shelfBooks.length; i++){
+          //for (var i=0; i<40; i++){
+            var newbook = document.createElement('a-box');
+            //newbook.setAttribute('material','src:#bookCover');
+            var name = shelfBooks[i].id;
+            newbook.setAttribute('material','src:assets/'+name+'/'+name+'-1.png');
+            newbook.setAttribute('open-shelf-book','');
+            newbook.setAttribute('update-progress-bar','');
+            newbook.setAttribute('shelf-book-hover','');
+            newbook.setAttribute('number',i);
+            newbook.setAttribute('id','shelfBook'+i);
+            newbook.object3D.scale.set(bookWidth, .5, .4);
+            newbook.object3D.position.set(startX+i*(bookWidth+.05), startY*1, -12);
+            document.querySelector('a-scene').appendChild(newbook);
+            var newtext = document.createElement('a-box');
+            newtext.setAttribute('visible','false');
+            newtext.setAttribute('number',i);
+            newtext.object3D.scale.set(1, .7, .01);
+            newtext.object3D.position.set(-12.2, startY*1.5, startZ+i*(bookWidth+.05));
+            newtext.setAttribute('id','shelfBookText'+i);
+            document.querySelector('a-scene').appendChild(newtext);
+            var newblurb = document.createElement('a-text');
+            newblurb.setAttribute('value',shelfBooks[i].title+'\n'+shelfBooks[i].author+'\n'+shelfBooks[i].date+'\n'+shelfBooks[i].call);
+            newblurb.setAttribute('color','black');
+            newblurb.setAttribute('width','2');
+            //newblurb.setAttribute('align','center');
+            newblurb.object3D.position.set(-.4, .1, 1.01);
+            document.querySelector('#shelfBookText'+i).appendChild(newblurb);
+          }
 
           //checkpoints
           checkpointCounter = 0;
